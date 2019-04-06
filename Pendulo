@@ -1,0 +1,22 @@
+#!/ usr / bin / python / binder
+from vpython import*
+scene=(display)
+scene.title= 'pendulo simple'
+scene.autoscale= 0
+phi0=pi*0.1
+m=1
+g=10
+l=4
+dt=1/50
+SR=frame()
+masa=sphere(frame=SR, pos=(0,-1,0.), radius= 0.2, color= color.blue)
+hilo=cylinder(frame=SR, axis=masa.pos, radius=0.05, color=color.red)
+phi=phi0
+phip=0
+SR.rotate(axis=(0,0,1), angle= phi)
+while 1:
+    phipp=-(m*g*l)*phi
+    phip=phip+phipp*dt
+    phi=phi+phip*dt
+    SR.rotate(axis=(0,0,1), angle=phip*dt)
+    rate(50)
